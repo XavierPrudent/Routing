@@ -1,7 +1,7 @@
 #################################
 ## Call the Civilia OSRM server
 ##
-## ./routage.sh data.txt
+## ./routage.sh data.txt out
 ##
 ## Input file data.txt with only long,lat
 ## -73.508716,45.539683
