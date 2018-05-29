@@ -24,15 +24,15 @@ OUT=$2
 echo "OUT: "$OUT
 echo
 
-## Trip or route
+## Trip (tour) or route (direct)
 SVC="trip"
 #SVC="route"
 echo "SVC: "$SVC
 echo
 
 ## All navi details
-STEPS="false"
-#STEPS="true"
+#STEPS="false"
+STEPS="true"
 echo "STEPS: "$STEPS
 echo
 
@@ -42,7 +42,7 @@ echo "COORDS: "$COORD
 echo
 
 ## Build the query api
-CMD="http://routing.civilia.ca/"$SVC"/v1/driving/"$COORD"?steps=${STEPS}&geometries=geojson&overview=full&approaches="
+CMD="http://routing.civilia.ca/"$SVC"/v1/driving/"$COORD"?steps=${STEPS}&geometries=geojson&overview=full&source=first&destination=last&approaches="
 
 ## Add the curb option, one by coord
 n=`wc -l $IN | awk '{print $1}'`
