@@ -3,6 +3,9 @@ library(data.table)
 library(sp)
 library(maptools)
 library(leaflet)
+library(dplyr)
+library(jsonlite)
+library(htmlwidgets)
 source("include.R")
 
 CSV <- "data/smartBin/2018-04-18_Sites.csv"

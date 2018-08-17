@@ -31,13 +31,20 @@ echo "SVC: "$SVC
 echo
 
 ## All navi details
-#STEPS="false"
-STEPS="true"
+STEPS="false"
+#STEPS="true"
 echo "STEPS: "$STEPS
 echo
 
 ## Extract the coordinates
-COORD=`awk -F"," '{print $2,",",$1}' $IN | tr "\n" ";" | sed  s/' '//g | sed 's/.$//'`
+#COORD=`awk -F"," '{print $1,",",$2}' $IN | tr "\n" ";" | sed  s/' '//g | sed 's/.$//'`
+n=`wc -l $IN | awk '{print $1}'`
+COORD=""
+for ((i=1;i<=$n;i++))
+do
+LINE=`sed "${i}q;d" $IN`
+COORD=$COORD";"$LINE
+done
 echo "COORDS: "$COORD
 echo
 
@@ -45,7 +52,7 @@ echo
 CMD="http://routing.civilia.ca/"$SVC"/v1/driving/"$COORD"?steps=${STEPS}&geometries=geojson&overview=full&source=first&destination=last&approaches="
 
 ## Add the curb option, one by coord
-n=`wc -l $IN | awk '{print $1}'`
+
 echo "NB. COORD: "$n
 echo
 OPT="" 
